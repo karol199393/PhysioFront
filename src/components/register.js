@@ -36,7 +36,7 @@ const Register = () => {
         />
       </label>
       <label>
-        Username:
+        Nazwa Użytkownika:
         <input
           type="text"
           value={username}
@@ -44,7 +44,7 @@ const Register = () => {
         />
       </label>
       <label>
-        Password:
+        Hasło:
         <input
           type="password"
           value={password}
@@ -52,7 +52,7 @@ const Register = () => {
         />
       </label>
       <label>
-        Register as Stuff:
+        Zarejstruj się jako Personel:
         <input
           type="checkbox"
           checked={isDoctor}

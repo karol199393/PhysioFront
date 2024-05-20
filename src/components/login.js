@@ -35,7 +35,7 @@ function Login() {
     return (
        <form onSubmit={handleSubmit} className="login-form">
            <label>
-               Username:
+               Nazwa Użytkownika
                <input
                    type="text"
                    value={username}
@@ -43,7 +43,7 @@ function Login() {
                />
            </label>
            <label>
-               Password:
+               Hasło
                <input
                    type="password"
                    value={password}
@@ -51,7 +51,7 @@ function Login() {
                />
            </label>
            <label>
-               Login as Stuff:
+               Zaloguj się jako Personel
                <input
                    type="checkbox"
                    checked={isDoctor}
