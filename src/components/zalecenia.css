@@ -1,11 +1,14 @@
+/* Zalecenia.css */
+
 body {
     background-color: black;
     color: white;
+    text-align: center;
 }
 
-button {
+.Zalecenia button {
     background-color: bisque;
-    color: white;
+    color: black;
     border: none;
     padding: 10px 20px;
     text-align: center;
@@ -16,18 +19,22 @@ button {
     cursor: pointer;
 }
 
-table {
+.Zalecenia table {
     border-collapse: collapse;
     width: 100%;
 }
 
-table, th, td {
+.Zalecenia table, .Zalecenia th, .Zalecenia td {
     border: 1px solid white;
     padding: 8px;
     text-align: left;
 }
 
-th {
+.Zalecenia th {
     background-color: bisque;
-    color: white;
+    color: black;
+}
+
+.Zalecenia input[type="text"] {
+    width: 1000px;
 }

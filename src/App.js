@@ -5,10 +5,11 @@ import { Route, NavLink, BrowserRouter } from 'react-router-dom';
 import { Routes } from 'react-router-dom';
 import Login from './components/login';
 import Register from './components/register';
-import Exercises from './components/exercises';
+import Zalecenia from './components/Zalecenia';
 import Players from './components/players';
 import Calendar from './components/calendar';
 import Start from './components/start';
+import logo from './logo.png'; 
 
 
 function App() {
@@ -19,10 +20,11 @@ function App() {
           <ul className="nav-list">
             <div className="nav-main">
               <li><NavLink to="/start">Start</NavLink></li>  
-              <li><NavLink to="/training">Zalecenia</NavLink></li>
+              <li><NavLink to="/zalecenia">Zalecenia</NavLink></li>
               <li><NavLink to="/exercises">Przebieg Leczenia</NavLink></li>  
               <li><NavLink to="/calendar">Kalendarz</NavLink></li>   
             </div>
+            <img src={logo} alt="Logo" className="center-logo" /> 
             <div className="nav-auth">
               <li><NavLink to="/login">Logowanie</NavLink></li>   
               <li><NavLink to="/register">Rejestracja</NavLink></li>   
@@ -33,7 +35,7 @@ function App() {
       <Routes>
         <Route path="/start" element={< Start/>} />  
         <Route path="/training" element={<TrainingComponent />} />
-        <Route path="/exercises" element={<Exercises />} />
+        <Route path="/zalecenia" element={<Zalecenia />} />
         <Route path="/players" element={<Players />} />
         <Route path="/calendar" element={<Calendar />} />
         <Route path="/login" element={<Login />} />
