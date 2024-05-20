@@ -6,18 +6,24 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [isDoctor, setIsDoctor] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = await fetch("http://localhost:8080/api/v1/register", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ email, username, password }),
-        });
-        const data = await response.json();
-        console.log(data);
+        const endpoint = isDoctor ? "http://localhost:8080/api/v1/registerStuff" : "http://localhost:8080/api/v1/registerPatient";
+        try {
+            const response = await fetch(endpoint, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, username, password }),
+            });
+            const data = await response.json();
+            console.log(data);
+        } catch (error) {
+            console.error('There was an error!', error);
+        }
     };
     return (
       <form onSubmit={handleSubmit} className="register-form">
@@ -43,6 +49,14 @@ const Register = () => {
           type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
+        />
+      </label>
+      <label>
+        Register as Stuff:
+        <input
+          type="checkbox"
+          checked={isDoctor}
+          onChange={(event) => setIsDoctor(event.target.checked)}
         />
       </label>
       <button type="submit">Register</button>
