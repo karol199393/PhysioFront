@@ -2,27 +2,32 @@ import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
 
 function ProgressChart() {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([{}]);
 
     const patientId = 1;
 
-    useEffect(() => {
-        fetch(`http://localhost:8080/api/v1/courseOfTreatment/patient/${patientId}`)
-            .then(response => response.json())
-            .then(data => {
-                const chartData = {
-                    labels: data.map(item => new Date(item.startDate)),
-                    datasets: [{
-                        label: 'Progress Rating',
-                        data: data.map(item => item.progressRating),
-                        fill: false,
-                        borderColor: 'rgb(75, 192, 192)',
-                        tension: 0.1
-                    }]
-                };
-                setData(chartData);
-            });
-    }, []);
+fetch(`http://localhost:8080/api/v1/courseOfTreatment/patient/${patientId}`)
+    .then(response => response.json())
+    .then(data => {
+        console.log('Data from API:', data);
+
+        if (!data || !Array.isArray(data)) {
+            console.error('Data is not an array:', data);
+            return;
+        }
+
+        const chartData = {
+            labels: data.map(item => new Date(item.startDate)),
+            datasets: [{
+                label: 'Progress Rating',
+                data: data.map(item => item.progressRating),
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            }]
+        };
+        setData(chartData);
+    });
 
     useEffect(() => {
         const newCourseOfTreatment = {
