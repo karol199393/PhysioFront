@@ -6,11 +6,10 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [isDoctor, setIsDoctor] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const endpoint = isDoctor ? "http://localhost:8080/api/v1/registerStuff" : "http://localhost:8080/api/v1/registerPatient";
+        const endpoint = "http://localhost:8080/api/v1/register";
         try {
             const response = await fetch(endpoint, {
                 method: "POST",
@@ -49,14 +48,6 @@ const Register = () => {
           type="password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
-        />
-      </label>
-      <label>
-        Zarejstruj się jako Personel:
-        <input
-          type="checkbox"
-          checked={isDoctor}
-          onChange={(event) => setIsDoctor(event.target.checked)}
         />
       </label>
       <button type="submit">Register</button>

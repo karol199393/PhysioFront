@@ -7,11 +7,10 @@ function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loginStatus, setLoginStatus] = useState("");
-    const [isDoctor, setIsDoctor] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const endpoint = isDoctor ? "http://localhost:8080/api/v1/loginforStuff" : "http://localhost:8080/api/v1/loginforPatient";
+        const endpoint = "http://localhost:8080/api/v1/login";
         try {
             const response = await fetch(endpoint, {
                 method: "POST",
@@ -23,7 +22,7 @@ function Login() {
             const data = await response.json();
             console.log(data);
             if (response.ok) {
-                setLoginStatus("Logged in successfully");
+                setLoginStatus(`Logged in successfully as ${data.role}`);
             } else {
                 setLoginStatus("Failed to log in");
             }
@@ -48,14 +47,6 @@ function Login() {
                    type="password"
                    value={password}
                    onChange={(event) => setPassword(event.target.value)}
-               />
-           </label>
-           <label>
-               Zaloguj się jako Personel
-               <input
-                   type="checkbox"
-                   checked={isDoctor}
-                   onChange={(event) => setIsDoctor(event.target.checked)}
                />
            </label>
            <button type="submit">Login</button>
