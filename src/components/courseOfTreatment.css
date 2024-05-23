@@ -1,17 +1,24 @@
-.login-form {
+
+
+.CourseOfTreatment {
     width: 300px;
     margin: 0 auto;
     font-family: 'Roboto', sans-serif;
 }
 
-.login-form label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 1.2em;
+.CourseOfTreatment h1 {
+    text-align: center;
+    color: #333;
 }
 
-.login-form input[type="text"],
-.login-form input[type="password"] {
+.CourseOfTreatment form {
+    display: flex;
+    flex-direction: column;
+}
+
+.CourseOfTreatment input[type="text"],
+.CourseOfTreatment input[type="number"],
+.CourseOfTreatment input[type="date"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -19,7 +26,7 @@
     border-radius: 5px;
 }
 
-.login-form button {
+.CourseOfTreatment button {
     width: 100%;
     padding: 10px;
     background-color: #333;
@@ -27,8 +34,8 @@
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}    
+}
 
-.login-form button:hover {
+.CourseOfTreatment button:hover {
     background-color: #444;
 }

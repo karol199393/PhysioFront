@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './courseOfTreatment.css';
 
 const CourseOfTreatment = () => {
     const [form, setForm] = useState({

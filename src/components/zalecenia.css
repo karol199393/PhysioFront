@@ -1,14 +1,15 @@
 /* Zalecenia.css */
 
 body {
-    background-color: black;
+    background-color: #333;
     color: white;
     text-align: center;
+    font-family: 'Roboto', sans-serif;
 }
 
 .Zalecenia button {
-    background-color: bisque;
-    color: black;
+    background-color: #444;
+    color: white;
     border: none;
     padding: 10px 20px;
     text-align: center;
@@ -17,6 +18,11 @@ body {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Zalecenia button:hover {
+    background-color: #555;
 }
 
 .Zalecenia table {
@@ -25,16 +31,19 @@ body {
 }
 
 .Zalecenia table, .Zalecenia th, .Zalecenia td {
-    border: 1px solid white;
+    border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
 .Zalecenia th {
-    background-color: bisque;
-    color: black;
+    background-color: #444;
+    color: white;
 }
 
 .Zalecenia input[type="text"] {
-    width: 1000px;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
