@@ -4,8 +4,7 @@ import './courseOfTreatment.css';
 const CourseOfTreatment = () => {
     const [form, setForm] = useState({
         name: "",
-        stuffId: "",
-        patientId: "",
+        userId: "",
         description: "",
         startDate: "",
         endDate: "",
@@ -22,41 +21,39 @@ const CourseOfTreatment = () => {
         });
     };
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+const handleSubmit = (event) => {
+    event.preventDefault();
 
-        const newCourseOfTreatment = {
-            name: form.name,
-            stuff: { id: form.stuffId },
-            patient: { id: form.patientId },
-            description: form.description,
-            startDate: form.startDate,
-            endDate: form.endDate,
-            progressRating: form.progressRating,
-            muscleStrength: form.muscleStrength,
-            endurance: form.endurance,
-            visitNotes: form.visitNotes
-        };
-
-        fetch(`http://localhost:8080/api/v1/courseOfTreatment/create`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newCourseOfTreatment)
-        })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.log('Error:', error));
+    const newCourseOfTreatment = {
+        name: form.name,
+        userId: form.userId, 
+        description: form.description,
+        startDate: form.startDate,
+        endDate: form.endDate,
+        progressRating: form.progressRating,
+        muscleStrength: form.muscleStrength,
+        endurance: form.endurance,
+        visitNotes: form.visitNotes
     };
+
+    fetch(`http://localhost:8080/api/v1/courseOfTreatment/create`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newCourseOfTreatment)
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.log('Error:', error));
+};
 
 return (
     <div>
         <h1>CourseOfTreatment</h1>
         <form onSubmit={handleSubmit}>
             <input type="text" name="name" value={form.name} onChange={handleChange} placeholder="Name" />
-            <input type="number" name="stuffId" value={form.stuffId} onChange={handleChange} placeholder="Stuff ID" />
-            <input type="number" name="patientId" value={form.patientId} onChange={handleChange} placeholder="Patient ID" />
+            <input type="number" name="userId" value={form.userId} onChange={handleChange} placeholder="User ID" />
             <input type="text" name="description" value={form.description} onChange={handleChange} placeholder="Description" />
             <input type="date" name="startDate" value={form.startDate} onChange={handleChange} placeholder="Start Date" />
             <input type="date" name="endDate" value={form.endDate} onChange={handleChange} placeholder="End Date" />
