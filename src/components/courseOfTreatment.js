@@ -52,15 +52,15 @@ return (
     <div>
         <h1>CourseOfTreatment</h1>
         <form onSubmit={handleSubmit}>
-            <input type="text" name="name" value={form.name} onChange={handleChange} placeholder="Name" />
+            <input type="text" name="name" value={form.name} onChange={handleChange} placeholder="Imie" />
             <input type="number" name="userId" value={form.userId} onChange={handleChange} placeholder="User ID" />
-            <input type="text" name="description" value={form.description} onChange={handleChange} placeholder="Description" />
-            <input type="date" name="startDate" value={form.startDate} onChange={handleChange} placeholder="Start Date" />
-            <input type="date" name="endDate" value={form.endDate} onChange={handleChange} placeholder="End Date" />
-            <input type="number" name="progressRating" value={form.progressRating} onChange={handleChange} placeholder="Progress Rating" />
-            <input type="number" name="muscleStrength" value={form.muscleStrength} onChange={handleChange} placeholder="Muscle Strength" />
-            <input type="number" name="endurance" value={form.endurance} onChange={handleChange} placeholder="Endurance" />
-            <input type="text" name="visitNotes" value={form.visitNotes} onChange={handleChange} placeholder="Visit Notes" />
+            <input type="text" name="description" value={form.description} onChange={handleChange} placeholder="Opis" />
+            <input type="date" name="startDate" value={form.startDate} onChange={handleChange} placeholder="Start" />
+            <input type="date" name="endDate" value={form.endDate} onChange={handleChange} placeholder="Koniec" />
+            <input type="number" name="progressRating" value={form.progressRating} onChange={handleChange} placeholder="Progress" />
+            <input type="number" name="muscleStrength" value={form.muscleStrength} onChange={handleChange} placeholder="Siła mięśni" />
+            <input type="number" name="endurance" value={form.endurance} onChange={handleChange} placeholder="Wytrzymalosc" />
+            <input type="text" name="visitNotes" value={form.visitNotes} onChange={handleChange} placeholder="Adnotacja wizyty" />
             <button type="submit">Wyślij</button>
         </form>
     </div>

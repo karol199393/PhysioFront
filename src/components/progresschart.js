@@ -35,11 +35,7 @@ function ProgressChart() {
             .then(data => {
                 console.log('Data from API:', data);
 
-                // if (!data || !Array.isArray(data)) {
-                //     console.error('Data is not an array:', data);
-                //     setData([]);
-                //     return;
-                // }
+            
 
                 const chartData = {
                     labels: data.map(item =>(item.startDate)),
@@ -54,43 +50,15 @@ function ProgressChart() {
                 setData(chartData);
             });
 
-        const newCourseOfTreatment = {
-            name: "New Course",
-            stuff: { id: 1 },
-            patient: { id: 1 },
-            description: "New course description",
-            startDate: "2022-01-01",
-            endDate: "2022-12-31",
-            progressRating: 5,
-            muscleStrength: 5.0,
-            endurance: 5.0,
-            visitNotes: "First visit notes"
-        };
-
-        fetch(`http://localhost:8080/api/v1/courseOfTreatment/create`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(newCourseOfTreatment)
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.log('There was a problem with the fetch operation: ' + error.message);
-            });
     }, []);
+
+
 
     return (
         <div>
-            <h2>Progress Chart</h2>
+            <h2>Przebieg leczenia</h2>
+            {data && data.datasets && data.datasets.length > 0 && <Line data={data} />}
+            <h2>Przebieg leczenia</h2>
             {data && data.datasets && data.datasets.length > 0 && <Line data={data} />}
         </div>
     );
