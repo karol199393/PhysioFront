@@ -11,6 +11,7 @@ import Start from './components/start';
 import logo from './logo.png'; 
 import ProgressChart from './components/progresschart';
 import CourseOfTreatment from './components/courseOfTreatment';
+import ZaleceniaEdit from './components/zaleceniaEdit';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <div className="nav-main">
               <li><NavLink to="/start">Start</NavLink></li>  
               <li><NavLink to="/zalecenia">Zalecenia</NavLink></li>
+              <li><NavLink to="/zaleceniaEdit">Edytuj Zalecenie</NavLink></li>
               <li><NavLink to="/progresschart">Przebieg Leczenia</NavLink></li>
               <li><NavLink to="/courseOfTreatment">Dodaj Parametry Leczenia</NavLink></li>  
               <li><NavLink to="/calendar">Kalendarz</NavLink></li>   
@@ -38,6 +40,7 @@ function App() {
         <Route path="/start" element={< Start/>} />  
         <Route path="/training" element={<TrainingComponent />} />
         <Route path="/zalecenia" element={<Zalecenia />} />
+        <Route path="/zaleceniaEdit" element={<ZaleceniaEdit />} />
         <Route path="/progresschart" element={<ProgressChart />} />
         <Route path="/courseOfTreatment" element={< CourseOfTreatment />} />
         <Route path="/calendar" element={<Calendar />} />
