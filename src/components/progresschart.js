@@ -34,18 +34,23 @@ function ProgressChart() {
             })
             .then(data => {
                 console.log('Data from API:', data);
-
-            
-
                 const chartData = {
                     labels: data.map(item =>(item.startDate)),
                     datasets: [{
-                        label: 'Progress Rating',
+                        label: 'Progres leczenia',
                         data: data.map(item => item.progressRating),
                         fill: false,
                         borderColor: 'rgb(75, 192, 192)',
                         tension: 0.1
-                    }]
+                    },
+                    {
+                        label:'Regeneracja',
+                        data:data.map(item => item.regenerativeRating),
+                        fill:false,
+                        borderColor: 'rgb(255, 99, 132)',
+                        tension: 0.1
+                    }
+                ]
                 };
                 setData(chartData);
             });
@@ -56,8 +61,6 @@ function ProgressChart() {
 
     return (
         <div>
-            <h2>Przebieg leczenia</h2>
-            {data && data.datasets && data.datasets.length > 0 && <Line data={data} />}
             <h2>Przebieg leczenia</h2>
             {data && data.datasets && data.datasets.length > 0 && <Line data={data} />}
         </div>

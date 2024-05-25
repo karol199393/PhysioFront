@@ -9,8 +9,7 @@ const CourseOfTreatment = () => {
         startDate: "",
         endDate: "",
         progressRating: "",
-        muscleStrength: "",
-        endurance: "",
+        regenerativeRating: "",
         visitNotes: ""
     });
 
@@ -31,8 +30,7 @@ const handleSubmit = (event) => {
         startDate: form.startDate,
         endDate: form.endDate,
         progressRating: form.progressRating,
-        muscleStrength: form.muscleStrength,
-        endurance: form.endurance,
+        regenerativeRating: form.regenerativeRating,
         visitNotes: form.visitNotes
     };
 
@@ -58,8 +56,7 @@ return (
             <input type="date" name="startDate" value={form.startDate} onChange={handleChange} placeholder="Start" />
             <input type="date" name="endDate" value={form.endDate} onChange={handleChange} placeholder="Koniec" />
             <input type="number" name="progressRating" value={form.progressRating} onChange={handleChange} placeholder="Progress" />
-            <input type="number" name="muscleStrength" value={form.muscleStrength} onChange={handleChange} placeholder="Siła mięśni" />
-            <input type="number" name="endurance" value={form.endurance} onChange={handleChange} placeholder="Wytrzymalosc" />
+            <input type="number" name="regenerativeRating" value={form.muscleStrength} onChange={handleChange} placeholder="Regeneracja" />
             <input type="text" name="visitNotes" value={form.visitNotes} onChange={handleChange} placeholder="Adnotacja wizyty" />
             <button type="submit">Wyślij</button>
         </form>

@@ -4,7 +4,7 @@ import './zalecenia.css'
 
 const Zalecenia = () => {
     const [recommendations, setRecommendations] = useState([]);
-    const [patients, setPatients] = useState([]);
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
         // Pobierz zalecenia
@@ -17,17 +17,17 @@ const Zalecenia = () => {
             });
 
         // Pobierz pacjentów
-        axios.get('http://localhost:8080/api/v1/patients/getAll')
+        axios.get('http://localhost:8080/api/v1/getAllUsers')
             .then(response => {
-                console.log('Pobrane dane pacjentów:', response.data);
+                console.log('Pobrane dane użytkowników:', response.data);
                 if (Array.isArray(response.data)) {
-                    setPatients(response.data);
+                    setUsers(response.data);
                 } else {
-                    console.error('Dane pacjentów nie są tablicą:', response.data);
+                    console.error('Dane użytkowników nie są tablicą:', response.data);
                 }
             })
             .catch(error => {
-                console.log('Błąd podczas pobierania danych pacjentów:', error);
+                console.log('Błąd podczas pobierania danych użytkowników:', error);
             });
     }, []);
 
@@ -35,10 +35,10 @@ const Zalecenia = () => {
     const addRecommendation = (event) => {
         event.preventDefault();
         const recommendation = event.target.recommendation.value;
-        const patientId = event.target.patientId.value;
+        const userId = event.target.userId.value;
         axios.post('http://localhost:8080/api/v1/recommendations/create', {
             recommendation,
-            patientId
+            userId
         })
             .then(response => {
                 console.log('Dodano zalecenie:', response.data);
@@ -49,24 +49,12 @@ const Zalecenia = () => {
             });
     };
 
-    //pobierz pacjenta po surname
-
-
-    const getPatientName = (patientId) => {
-        const patient = patients.find(p => p.id === patientId);
-        return patient ? `${patient.name} ${patient.surname}` : 'Nieznany pacjent';
+    // Pobierz nazwę użytkownika po ID
+    const getUserName = (id) => {
+        const user = users.find(user => user.id === id);
+        return user ? user.surname : 'Nieznany';
     }
 
-    const getPatientBySurname = (surname) => {
-        axios.get(`http://localhost:8080/api/v1/patients/getPatientBySurname/${surname}`)
-            .then(response => {
-                console.log('Pobrane dane pacjenta:', response.data);
-                // Tutaj możesz zrobić coś z danymi pacjenta
-            })
-            .catch(error => {
-                console.log('Błąd podczas pobierania danych pacjenta:', error);
-            });
-    }
     return (
         <div className="Zalecenia">
             <h1>Zalecenia</h1>
@@ -83,7 +71,7 @@ const Zalecenia = () => {
                         <tr key={recommendation.id}>
                             <td>{recommendation.id}</td>
                             <td>{recommendation.recommendation}</td>
-                            <td>{getPatientName(recommendation.patientId)}</td>
+                            <td>{getUserName(recommendation.UserId)}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -92,20 +80,18 @@ const Zalecenia = () => {
             <form onSubmit={addRecommendation}>
                 <label>
                     Zalecenie:
-
                     <input type="text" name="recommendation" />
-
                 </label>
-<label>
-    Pacjent:
-    <select name="patientId" onChange={event => getPatientBySurname(event.target.value)}>
-        {patients.map(patient => (
-            <option key={patient.surname} value={patient.surname}>
-                {patient.surname}
-            </option>
-        ))}
-    </select>
-</label>
+                <label>
+                    Użytkownik:
+                    <select name="userId">
+                        {users.map(user => (
+                            <option key={user.id} value={user.id}>
+                                {user.surname}
+                            </option>
+                        ))}
+                    </select>
+                </label>
                 <button type="submit">Dodaj zalecenie</button>
             </form>
         </div>
