@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, NavLink, BrowserRouter, Routes } from 'react-router-dom';
 import { CiLogin, CiCalendarDate } from "react-icons/ci";
 import { FaChartLine, FaStickyNote, FaRegEdit } from "react-icons/fa";
 import { IoHomeOutline } from "react-icons/io5";
 import { VscAccount } from "react-icons/vsc";
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
 
 import Login from './components/login';
 import Register from './components/register';
@@ -14,20 +14,19 @@ import Start from './components/start';
 import ProgressChart from './components/progresschart';
 import CourseOfTreatment from './components/courseOfTreatment';
 import ZaleceniaEdit from './components/zaleceniaEdit';
-
 import './App.css';
 import logo from './logo.png'; 
 
 function App() {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
 
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
+  // const openModal = () => {
+  //   setModalIsOpen(true);
+  // };
 
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
+  // const closeModal = () => {
+  //   setModalIsOpen(false);
+  // };
 
   return (
     <BrowserRouter>
@@ -50,14 +49,14 @@ function App() {
           </ul>
         </nav> 
       </div>
-      <Modal
+      {/* <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         contentLabel="Zalecenia Modal"
       >
         <h2>Zalecenia</h2>
         <button onClick={closeModal}>Zamknij</button>
-      </Modal>
+      </Modal> */}
       <Routes>
         <Route path="/start" element={< Start/>} />  
         <Route path="/zalecenia" element={<Zalecenia />} />

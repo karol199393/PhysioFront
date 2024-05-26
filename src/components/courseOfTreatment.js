@@ -48,7 +48,7 @@ const handleSubmit = (event) => {
 
 return (
     <div>
-        <h1>CourseOfTreatment</h1>
+        <h1>Dane wizyty</h1>
         <form onSubmit={handleSubmit}>
             <input type="text" name="name" value={form.name} onChange={handleChange} placeholder="Imie" />
             <input type="number" name="userId" value={form.userId} onChange={handleChange} placeholder="User ID" />
