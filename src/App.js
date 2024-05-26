@@ -1,27 +1,34 @@
-import React from 'react';
-import TrainingComponent from './components/Zalecenia';
-import './App.css';
-import { Route, NavLink, BrowserRouter } from 'react-router-dom';
-import { Routes } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Route, NavLink, BrowserRouter, Routes } from 'react-router-dom';
+import { CiLogin, CiCalendarDate } from "react-icons/ci";
+import { FaChartLine, FaStickyNote, FaRegEdit } from "react-icons/fa";
+import { IoHomeOutline } from "react-icons/io5";
+import { VscAccount } from "react-icons/vsc";
+import Modal from 'react-modal';
+
 import Login from './components/login';
 import Register from './components/register';
 import Zalecenia from './components/Zalecenia';
 import Calendar from './components/calendar';
 import Start from './components/start';
-import logo from './logo.png'; 
 import ProgressChart from './components/progresschart';
 import CourseOfTreatment from './components/courseOfTreatment';
 import ZaleceniaEdit from './components/zaleceniaEdit';
-import { CiLogin } from "react-icons/ci";
-import { FaChartLine } from "react-icons/fa";
-import { FaRegNoteSticky } from "react-icons/fa6";
-import { FaRegEdit } from "react-icons/fa";
-import { CiCalendarDate } from "react-icons/ci";
-import { IoHomeOutline } from "react-icons/io5";
-import { VscAccount } from "react-icons/vsc";
 
+import './App.css';
+import logo from './logo.png'; 
 
 function App() {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const openModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
   return (
     <BrowserRouter>
       <div>
@@ -29,7 +36,7 @@ function App() {
           <ul className="nav-list">
             <div className="nav-main">
               <li><NavLink to="/start"><IoHomeOutline/> Strona Główna</NavLink></li>  
-              <li><NavLink to="/zalecenia"><FaRegNoteSticky /> Zalecenia</NavLink></li>
+              <li><NavLink to="/zalecenia"><FaStickyNote /> Zalecenia</NavLink></li>
               <li><NavLink to="/zaleceniaEdit"><FaRegEdit /> Edytuj Zalecenie</NavLink></li>
               <li><NavLink to="/progresschart"><FaChartLine /> Przebieg Leczenia</NavLink></li>
               <li><NavLink to="/courseOfTreatment"><FaRegEdit /> Dodaj Parametry Leczenia</NavLink></li>  
@@ -43,9 +50,16 @@ function App() {
           </ul>
         </nav> 
       </div>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Zalecenia Modal"
+      >
+        <h2>Zalecenia</h2>
+        <button onClick={closeModal}>Zamknij</button>
+      </Modal>
       <Routes>
         <Route path="/start" element={< Start/>} />  
-        <Route path="/training" element={<TrainingComponent />} />
         <Route path="/zalecenia" element={<Zalecenia />} />
         <Route path="/zaleceniaEdit" element={<ZaleceniaEdit />} />
         <Route path="/progresschart" element={<ProgressChart />} />
