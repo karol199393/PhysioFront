@@ -4,8 +4,8 @@
 }
 
 .hero-image {
-    background: url('pic01.jpg') no-repeat center center; /* Zastąp './hero-image.jpg' ścieżką do twojego obrazka */
-    background-size: cover;
+    background: url('pic01.jpg');
+    
     height: 100vh;
     display: flex;
     flex-direction: column;
