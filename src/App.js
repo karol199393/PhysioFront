@@ -12,6 +12,13 @@ import logo from './logo.png';
 import ProgressChart from './components/progresschart';
 import CourseOfTreatment from './components/courseOfTreatment';
 import ZaleceniaEdit from './components/zaleceniaEdit';
+import { CiLogin } from "react-icons/ci";
+import { FaChartLine } from "react-icons/fa";
+import { FaRegNoteSticky } from "react-icons/fa6";
+import { FaRegEdit } from "react-icons/fa";
+import { CiCalendarDate } from "react-icons/ci";
+import { IoHomeOutline } from "react-icons/io5";
+import { VscAccount } from "react-icons/vsc";
 
 
 function App() {
@@ -21,17 +28,17 @@ function App() {
         <nav>
           <ul className="nav-list">
             <div className="nav-main">
-              <li><NavLink to="/start">Start</NavLink></li>  
-              <li><NavLink to="/zalecenia">Zalecenia</NavLink></li>
-              <li><NavLink to="/zaleceniaEdit">Edytuj Zalecenie</NavLink></li>
-              <li><NavLink to="/progresschart">Przebieg Leczenia</NavLink></li>
-              <li><NavLink to="/courseOfTreatment">Dodaj Parametry Leczenia</NavLink></li>  
-              <li><NavLink to="/calendar">Kalendarz</NavLink></li>   
+              <li><NavLink to="/start"><IoHomeOutline/> Strona Główna</NavLink></li>  
+              <li><NavLink to="/zalecenia"><FaRegNoteSticky /> Zalecenia</NavLink></li>
+              <li><NavLink to="/zaleceniaEdit"><FaRegEdit /> Edytuj Zalecenie</NavLink></li>
+              <li><NavLink to="/progresschart"><FaChartLine /> Przebieg Leczenia</NavLink></li>
+              <li><NavLink to="/courseOfTreatment"><FaRegEdit /> Dodaj Parametry Leczenia</NavLink></li>  
+              <li><NavLink to="/calendar"> <CiCalendarDate /> Kalendarz</NavLink></li>   
             </div>
             <img src={logo} alt="Logo" className="center-logo" /> 
             <div className="nav-auth">
-              <li><NavLink to="/login">Logowanie</NavLink></li>   
-              <li><NavLink to="/register">Rejestracja</NavLink></li>   
+              <li><NavLink to="/login"><CiLogin /> Logowanie</NavLink></li>   
+              <li><NavLink to="/register"> <VscAccount /> Rejestracja</NavLink></li>   
             </div>
           </ul>
         </nav> 

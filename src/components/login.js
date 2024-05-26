@@ -10,6 +10,15 @@ function Login() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if (!validateUsername(username)) {
+            alert("Niepoprawna nazwa użytkownika. Nazwa użytkownika powinna zawierać co najmniej 3 znaki i składać się tylko z liter i cyfr.");
+            return;
+        }
+        if (!validatePassword(password)) {
+            alert("Niepoprawne hasło. Hasło powinno zawierać co najmniej 8 znaków, w tym co najmniej jedną literę i jedną cyfrę.");
+            return;
+        }
+
         const endpoint = "http://localhost:8080/api/v1/login";
         try {
             const response = await fetch(endpoint, {
@@ -31,6 +40,16 @@ function Login() {
             setLoginStatus("Failed to log in");
         }
     };
+
+    const validateUsername = (username) => {
+        const re = /^[a-zA-Z0-9]+$/;
+        return re.test(String(username).toLowerCase());
+    }
+
+    const validatePassword = (password) => {  
+        const re = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+        return re.test(String(password));
+    }
     return (
        <form onSubmit={handleSubmit} className="login-form">
            <label>
