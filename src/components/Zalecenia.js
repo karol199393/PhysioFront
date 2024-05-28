@@ -71,7 +71,7 @@ const Zalecenia = () => {
                         <tr key={recommendation.id}>
                             <td>{recommendation.id}</td>
                             <td>{recommendation.recommendation}</td>
-                            <td>{getUserName(recommendation.UserId)}</td>
+                            <td>{users.username}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -87,7 +87,7 @@ const Zalecenia = () => {
                     <select name="userId">
                         {users.map(user => (
                             <option key={user.id} value={user.id}>
-                                {user.surname}
+                                {user.username}
                             </option>
                         ))}
                     </select>

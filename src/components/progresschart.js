@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Line } from 'react-chartjs-2';
+import './progresschart.css';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -62,7 +63,9 @@ function ProgressChart() {
     return (
         <div>
             <h2>Przebieg leczenia</h2>
+            <div className="progress-chart">
             {data && data.datasets && data.datasets.length > 0 && <Line data={data} />}
+            </div>
         </div>
     );
 }
