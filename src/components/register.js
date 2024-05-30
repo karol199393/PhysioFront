@@ -6,11 +6,8 @@ const Register = () => {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [role, setRole] = useState("DOCTOR");
-    const roleToId = {
-        "DOCTOR": 1,
-        "PATIENT": 2
-    };
+    const [roleId, setRoleId] = useState(1);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -34,7 +31,7 @@ const Register = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ email, username, password, role: roleToId[role] }),
+                body: JSON.stringify({ email, username, password, roleId }),
             });
             const data = await response.json();
             console.log(data);
@@ -82,15 +79,15 @@ const Register = () => {
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                 />
-            </label>
-            <label>  {/* new label for role selection */}
+            </label><label>
                 Rola:
-                <select value={role} onChange={(event) => setRole(event.target.value)}>
+                <select value={roleId} onChange={(event) => setRoleId(event.target.value)}>
                     <option value="">Wybierz rolę</option>
-                    <option value="DOCTOR">Lekarz</option>
-                    <option value="PATIENT">Pacjent</option>
+                    <option value="1">Lekarz</option> {/* ID dla Lekarza */}
+                    <option value="2">Pacjent</option> {/* ID dla Pacjenta */}
                 </select>
             </label>
+
             <button type="submit">Zarejstruj</button>
         </form>
     );

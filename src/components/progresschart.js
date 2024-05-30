@@ -58,8 +58,6 @@ function ProgressChart() {
 
     }, []);
 
-
-
     return (
         <div>
             <h2>Przebieg leczenia</h2>
