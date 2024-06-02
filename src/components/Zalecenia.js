@@ -34,8 +34,8 @@ const Zalecenia = () => {
     //Dodaj zalecenie
     const addRecommendation = (event) => {
         event.preventDefault();
-        const recommendation = event.target.recommendation.value;
-        const userId = event.target.userId.value;
+        const recommendation = event.target.elements.recommendation.value;
+        const userId = event.target.elements.userId.value.toString();
         axios.post('http://localhost:8080/api/v1/recommendations/create', {
             recommendation,
             userId
@@ -49,11 +49,7 @@ const Zalecenia = () => {
             });
     };
 
-    // Pobierz nazwę użytkownika po ID
-    const getUserName = (id) => {
-        const user = users.find(user => user.id === id);
-        return user ? user.surname : 'Nieznany';
-    }
+
 
     return (
         <div className="Zalecenia">
@@ -66,16 +62,20 @@ const Zalecenia = () => {
                         <th>Pacjent</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {recommendations.map(recommendation => (
-                        <tr key={recommendation.id}>
-                            <td>{recommendation.id}</td>
-                            <td>{recommendation.recommendation}</td>
-                            <td>{users.username}</td>
-                        </tr>
-                    ))}
+                <tbody> 
+                    {recommendations.map(recommendation => {
+                        const user = users.find(user => user.id === recommendation.user.id);
+                        return (
+                            <tr key={recommendation.id}>
+                                <td>{recommendation.id}</td>
+                                <td>{recommendation.recommendation}</td>
+                                <td>{user ? user.username : 'Nieznany'}</td>
+                            </tr>
+                        );
+                    })}
                 </tbody>
             </table>
+
 
             <form onSubmit={addRecommendation}>
                 <label>
