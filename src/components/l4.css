@@ -1,0 +1,50 @@
+/* Zalecenia.css */
+
+body {
+    background-color: white;
+    color: black;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.Zalecenia button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.Zalecenia button:hover {
+    background-color: #555;
+}
+
+.Zalecenia table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.Zalecenia table, .Zalecenia th, .Zalecenia td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.Zalecenia th {
+    background-color: #444;
+    color: white;
+}
+
+.Zalecenia input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 1000px;
+}

@@ -14,6 +14,7 @@
 .CourseOfTreatment form {
     display: flex;
     flex-direction: column;
+    border: 20px solid #333;
 }
 
 .CourseOfTreatment input[type="text"],
@@ -24,6 +25,7 @@
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    font-weight: 700;
 }
 
 .CourseOfTreatment button {
