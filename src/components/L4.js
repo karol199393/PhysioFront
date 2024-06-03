@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import './l4.css'
+import './l4.css';
 
-const Zalecenia = () => {
-    const [recommendations, setRecommendations] = useState([]);
+const L4 = () => {
+    const [sick_leave, setsick_leave] = useState([]);
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
         // Pobierz zalecenia
-        axios.get('http://localhost:8080/api/v1/recommendations/getAllRec')
+        axios.get('http://localhost:8080/api/v1/sickleave/getAllSickLeaves')
             .then(response => {
-                setRecommendations(response.data);
+                setsick_leave(response.data);
             })
             .catch(error => {
-                console.log('Błąd podczas pobierania zaleceń:', error);
+                console.log('Błąd podczas pobierania L4:', error);
             });
 
         // Pobierz pacjentów
@@ -32,43 +32,43 @@ const Zalecenia = () => {
     }, []);
 
     //Dodaj zalecenie
-    const addRecommendation = (event) => {
-        event.preventDefault();
-        const recommendation = event.target.elements.recommendation.value;
-        const userId = event.target.elements.userId.value.toString();
-        axios.post('http://localhost:8080/api/v1/recommendations/create', {
-            recommendation,
-            userId
+const addsick_leave = (event) => {
+    event.preventDefault();
+    const newSickLeave = event.target.elements.sick_leave.value;
+    const userId = event.target.elements.userId.value.toString();
+    axios.post('http://localhost:8080/api/v1/sickleave/create', {
+        sick_leave: newSickLeave,
+        userId
+    })
+        .then(response => {
+            console.log('Dodano zalecenie:', response.data);
+            setsick_leave([...sick_leave, response.data]);
         })
-            .then(response => {
-                console.log('Dodano zalecenie:', response.data);
-                setRecommendations([...recommendations, response.data]);
-            })
-            .catch(error => {
-                console.log('Błąd podczas dodawania zalecenia:', error);
-            });
-    };
+        .catch(error => {
+            console.log('Błąd podczas dodawania L4:', error);
+        });
+};
 
 
 
     return (
-        <div className="Zalecenia">
-            <h1>Zalecenia</h1>
+        <div className="L4">
+            <h1>L4 Zwolnienia lekarskie</h1>
             <table>
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Zalecenia</th>
+                        <th>Powód</th>
                         <th>Pacjent</th>
                     </tr>
                 </thead>
                 <tbody> 
-                    {recommendations.map(recommendation => {
-                        const user = users.find(user => user.id === recommendation.user.id);
+                    {sick_leave.map(sick_leave => {
+                        const user = users.find(user => user.id === sick_leave.user.id);
                         return (
-                            <tr key={recommendation.id}>
-                                <td>{recommendation.id}</td>
-                                <td>{recommendation.recommendation}</td>
+                            <tr key={sick_leave.id}>
+                                <td>{sick_leave.id}</td>
+                                <td>{sick_leave.sick_leave}</td>
                                 <td>{user ? user.username : 'Nieznany'}</td>
                             </tr>
                         );
@@ -77,10 +77,10 @@ const Zalecenia = () => {
             </table>
 
 
-            <form onSubmit={addRecommendation}>
+            <form onSubmit={addsick_leave}>
                 <label>
-                    Zalecenie:
-                    <input type="text" name="recommendation" />
+                    Powoód:
+                    <input type="text" name="sick_leave" />
                 </label>
                 <label>
                     Użytkownik:
@@ -92,10 +92,10 @@ const Zalecenia = () => {
                         ))}
                     </select>
                 </label>
-                <button type="submit">Dodaj zalecenie</button>
+                <button type="submit">Wystaw</button>
             </form>
         </div>
     );
 };
 
-export default Zalecenia;
+export default L4;

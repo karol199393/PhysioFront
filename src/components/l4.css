@@ -1,4 +1,4 @@
-/* Zalecenia.css */
+/* L4.css */
 
 body {
     background-color: white;
@@ -7,7 +7,7 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.Zalecenia button {
+.L4 button {
     background-color: #444;
     color: white;
     border: none;
@@ -21,27 +21,27 @@ body {
     transition: background-color 0.3s ease;
 }
 
-.Zalecenia button:hover {
+.L4 button:hover {
     background-color: #555;
 }
 
-.Zalecenia table {
+.L4 table {
     border-collapse: collapse;
     width: 100%;
 }
 
-.Zalecenia table, .Zalecenia th, .Zalecenia td {
+.L4 table, .L4 th, .L4 td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
 }
 
-.Zalecenia th {
+.L4 th {
     background-color: #444;
     color: white;
 }
 
-.Zalecenia input[type="text"] {
+.L4 input[type="text"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;

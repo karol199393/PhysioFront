@@ -14,6 +14,7 @@ import Start from './components/start';
 import ProgressChart from './components/progresschart';
 import CourseOfTreatment from './components/courseOfTreatment';
 import ZaleceniaEdit from './components/zaleceniaEdit';
+import L4 from './components/L4';
 import './App.css';
 import logo from './logo.png'; 
 
@@ -37,6 +38,7 @@ function App() {
               <li><NavLink to="/start"><IoHomeOutline/> Strona Główna</NavLink></li>  
               <li><NavLink to="/zalecenia"><FaStickyNote /> Zalecenia</NavLink></li>
               <li><NavLink to="/zaleceniaEdit"><FaRegEdit /> Edytuj Zalecenie</NavLink></li>
+              <li><NavLink to="/l4"><FaStickyNote /> L4</NavLink></li>
               <li><NavLink to="/progresschart"><FaChartLine /> Przebieg Leczenia</NavLink></li>
               <li><NavLink to="/courseOfTreatment"><FaRegEdit /> Dodaj Parametry Leczenia</NavLink></li>  
               <li><NavLink to="/calendar"> <CiCalendarDate /> Kalendarz</NavLink></li>   
@@ -61,6 +63,7 @@ function App() {
         <Route path="/start" element={< Start/>} />  
         <Route path="/zalecenia" element={<Zalecenia />} />
         <Route path="/zaleceniaEdit" element={<ZaleceniaEdit />} />
+        <Route path="/l4" element={<L4 />} />
         <Route path="/progresschart" element={<ProgressChart />} />
         <Route path="/courseOfTreatment" element={< CourseOfTreatment />} />
         <Route path="/calendar" element={<Calendar />} />
